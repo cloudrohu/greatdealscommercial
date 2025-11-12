@@ -142,18 +142,18 @@
 </style>
 
 <style>
-.map-container iframe {
-    width: 100% !important;
-    height: 450px;
-    border: 0;
-    display: block;
-}
-
-@media (max-width: 768px) {
     .map-container iframe {
-        height: 300px;
+        width: 100% !important;
+        height: 450px;
+        border: 0;
+        display: block;
     }
-}
+
+    @media (max-width: 768px) {
+        .map-container iframe {
+            height: 300px;
+        }
+    }
 </style>
 
 <style>
@@ -334,659 +334,663 @@
     <div class="main-container d-flex">        
         <main class="left-section">
             <div class="page-wrapper">
-                <!-- xxxxxxxxxxxx Top Section xxxxxxxxxxxx -->
-                <section id="home">
-                    <div class="container-fuild">
-                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            {% for rs in slider %}
-                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <img src="{{rs.web_image.url}}" style="height: 650px; width: 100%;" class="mobile-img" class="d-block w-100" alt="...">
+                                        <!-- xxxxxxxxxxxx Top Section xxxxxxxxxxxx -->
+                        <section id="home">
+                            <div class="container-fuild">
+                                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    {% for rs in slider %}
+                                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                    <img src="{{rs.web_image.url}}" style="height: 650px; width: 100%;" class="mobile-img" class="d-block w-100" alt="...">
+                                    </div>
+                                    {% endfor %}
+                                    
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+
+                                
+                        </section>
+
+
+                        <div class="mob-form d-sm-block d-md-none d-lg-none">
+                            <div class="call-back-section text-center pt-3 pb-3" style="border-bottom: 1px solid #DDD;">
+                                <h3 class="mb-0">Pre-Register here for Best Offers</h3>
                             </div>
-                            {% endfor %}
-                            
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
 
-                        
-                </section>
-                <div class="mob-form d-sm-block d-md-none d-lg-none">
-                    <div class="call-back-section text-center pt-3 pb-3" style="border-bottom: 1px solid #DDD;">
-                        <h3 class="mb-0">Pre-Register here for Best Offers</h3>
-                    </div>
-
-                    <div class="form-section p-4">
-                        <form class="text-center" name="Pre-Register-sidemodal" action="/submit-form/" method="post">
-                    {% csrf_token %}
-                    <div class="form-group mb-3">
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Your Name here..." name="name" required>
-                        <span class="error">Name field is required</span>
-                    </div>
-                    <div class="form-group mb-3">
-                        <input type="number" id="mobile" class="form-control" required placeholder="Phone Number" name="mobile" oninput="limitDigits(this, 10)">
-                        <span class="error">Mobile field is required</span>
-                    </div>
-                    <div class="form-group mb-3">
-                        <input type="email" id="email" class="form-control" required placeholder="Email" name="email">
-                        <span class="error">Email field is required</span>
-                    </div>
-                    <div>
-                        <input type="hidden" name="form_name" id="form_name2" class="form-control form_name" value="Pre-Register">
-                        <input type="hidden" id="website_url2" class="website_url" name="website_url">
-                    </div>
-                    <div class="form-group acceptance mb-3" style="font-size: 10px;"><label class="form-check-label text-start">
-							<input type="checkbox" checked class="form-check-input" required>
-							<span class="text on-rera">I Consent to The Processing of Provided Data According To <a href="{% url "privacy-policy" %}" style="color:#007bff"> Privacy Policy | </a> <a href="terms-conditions.html" style="color:#007bff;"> Terms &amp; Conditions</a>, I Authorize Prop Solutions 4 U Pvt. Ltd. and its representatives to Call, SMS, Email or WhatsApp Me About Its Products and Offers. This Consent Overrides Any Registration For DNC/NDNC. </span>
-							<span class="text non-rera">Please be informed that this website is not intended to facilitate any sales transactions. I understand and acknowledge that the project I am interested in hasn't yet secured RERA clearance. The primary purpose of this website is to generate interest and gather information. By providing my data, I consent to its use in accordance with the <a href="Privacy-Policy.html" style="color:#007bff"> Privacy Policy | </a> <a href="terms-conditions.html" style="color:#007bff;"> Terms &amp; Conditions</a></span>
-						</label>
-                    </div>
-                    <button id="right-panel-preregister-button" class="btn preRegisterBtn data-id-btn on-rera" data-id="Pre-Register" onclick="submitForm(event, 'Pre-Register-sidemodal')">Pre-Register Now</button>
-
-                </form>
-                    </div>
-                </div>
-                <!-- xxxxxxxxxxxx Combined Overview + Project Section xxxxxxxxxxxx -->
-                <style>
-/* --- Card container --- */
-.project-card {
-  position: relative;
-  background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
-  border-radius: 18px;
-  padding: 28px 22px;
-  box-shadow: 0 10px 30px rgba(14, 21, 47, 0.06);
-  transition: transform 320ms cubic-bezier(.2,.9,.35,1), box-shadow 320ms ease, filter 320ms ease;
-  text-align: center;
-  overflow: visible;
-  will-change: transform;
-  transform-origin: center;
-  border: 1px solid rgba(0,0,0,0.03);
-}
-
-/* Hover: stronger 3D lift + slight rotate */
-.project-card:hover {
-  transform: translateY(-14px) rotateZ(-0.6deg) scale(1.02);
-  box-shadow: 0 22px 50px rgba(14, 21, 47, 0.16);
-  filter: saturate(1.03);
-}
-
-/* Subtle golden top accent line (fades in on hover) */
-.project-card::after{
-  content: "";
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  top: 10px;
-  height: 6px;
-  border-radius: 6px;
-  background: linear-gradient(90deg, rgba(180,138,28,0) 0%, rgba(180,138,28,0.0) 10%, rgba(180,138,28,0.45) 50%, rgba(180,138,28,0.0) 90%);
-  opacity: 0;
-  transition: opacity 260ms ease, transform 320ms ease;
-  transform: translateY(-6px);
-  pointer-events: none;
-}
-.project-card:hover::after { opacity: 1; transform: translateY(0); }
-
-/* Title & meta */
-.project-card h1 {
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  margin: 6px 0 2px;
-  color: #202124;
-}
-.project-card h6 { color: #6e6e6e; font-size: 14px; margin: 0; }
-
-/* Details box with subtle inner shadow */
-.details-box {
-  background-color: #f6f6f6;
-  border-radius: 12px;
-  padding: 14px 12px;
-  margin: 18px 0;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-}
-.details-box div { font-size: 15px; margin: 6px 0; color: #333; }
-
-/* Offer box with animated border & pulse on hover */
-.offerBox {
-  position: relative;
-  background: linear-gradient(90deg, #b48a1c 0%, #d0ac3f 100%);
-  color: #fff;
-  border-radius: 12px;
-  padding: 12px 14px;
-  margin: 10px 0 14px;
-  overflow: hidden;
-  transition: transform 300ms ease;
-}
-.offerBox::before {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  border-radius: 10px;
-  border: 3px dashed rgba(255,255,255,0.35);
-  mix-blend-mode: overlay;
-  transform: scale(0.98);
-  transition: transform 300ms ease, opacity 300ms ease;
-  opacity: 0.9;
-}
-.project-card:hover .offerBox { transform: translateY(-6px) scale(1.01); animation: pulseOffer 2000ms infinite ease-in-out 800ms; }
-@keyframes pulseOffer {
-  0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.04); }
-  50% { box-shadow: 0 6px 18px -6px rgba(255,255,255,0.06); }
-  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.04); }
-}
-.offerBox p { margin: 4px 0; font-weight: 600; letter-spacing: 0.2px; }
-
-/* Price styling with accent coin */
-.price {
-  font-size: 22px;
-  font-weight: 800;
-  color: #222;
-  margin-top: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 8px;
-}
-.price .symbol {
-  color: #b48a1c;
-  font-size: 20px;
-  transform: translateY(-2px);
-}
-
-/* Enquire button: raised style + hover lift */
-.project-card .btn-enquire {
-  display:inline-block;
-  background: linear-gradient(180deg,#b48a1c,#9a6f12);
-  color:#fff;
-  font-weight:700;
-  border:none;
-  border-radius:10px;
-  padding:10px 22px;
-  margin-top:12px;
-  cursor:pointer;
-  box-shadow: 0 8px 20px rgba(164,120,32,0.14);
-  transition: transform 220ms ease, box-shadow 220ms ease, opacity 200ms;
-}
-.project-card .btn-enquire:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 38px rgba(150,100,30,0.18);
-  opacity: 0.98;
-}
-
-/* small responsive tweaks */
-@media (max-width: 768px) {
-  .project-card { padding: 20px; }
-  .project-card h1 { font-size: 20px; }
-}
-</style>
-                <section class="sec1" id="about_us">
-                <div class="container">
-                    <div class="row justify-content-center">
-
-                    <!-- LEFT SIDE : Project Details Card -->
-                    <div class="col-xl-5 col-lg-5 col-md-12 mb-4">
-                        {% for rs in bookingopen %}
-                        <div class="project-card">
-                        <p class="text-center mb-1" style="color:#888;font-weight:500;">New Launch</p>
-                        <h1>{{ rs.project_name }}</h1>
-                        <h6>By {{ rs.by }}</h6>
-                        <h6>At {{ rs.at }}</h6>
-
-                        <div class="details-box">
-                            <div><strong>Land Parcel:</strong> {{ rs.landp_arcel }}</div>
-                            <div><strong>Floors:</strong> {{ rs.floors }}</div>
-                            <div><strong>Possession:</strong> {{ rs.possession }}</div>
-                        </div>
-
-                        <div class="offerBox">
-                            <p>◆ {{ rs.spot_booking_offers }}</p>
-                            <p>◆ {{ rs.early_buy_discounts }}</p>
-                            <p>◆ {{ rs.flexipay_for_first }}</p>
-                        </div>
-
-                        <p class="mb-0" style="font-size:15px;">Premium {{ rs.luxurious }}</p>
-                        <div class="price"><span class="symbol">₹</span> <span>{{ rs.priceing }}</span></div>
-
-                        <button type="button" class="btn-enquire"
-                            data-bs-target="#enquire-modal" data-bs-toggle="modal"
-                            data-bs-whatever="Enquire Now" data-id="Brochure">
-                            Enquire Now
-                        </button>
-                        </div>
-                        {% endfor %}
-                    </div>
-
-                    <!-- RIGHT SIDE : Overview Content -->
-                    <div class="col-xl-7 col-lg-7 col-md-12">
-                        {% for rs in welcome %}
-                        <div class="overview-data">
-                        <h1>Welcome To {{ rs.title }}</h1>
-                        <p>{{ rs.details }}</p>
-                        <p class="overview-info">
-                            <span class="moreText" style="display: none;">{{ rs.readmore }}</span>
-                        </p>
-
-                        <button class="readMoreBtn custom-btn" onclick="toggleReadMore(this)">Read More</button>
-                        <br><br>
-
-                        <button id="request-brochure-button" type="button" class="custom-btn data-id-btn on-rera"
-                            data-bs-target="#enquire-modal" data-bs-toggle="modal"
-                            data-bs-whatever="Enquire Now" data-id="Brochure">
-                            <i class="fa-solid fa-download"></i>&nbsp;&nbsp;Request Brochure
-                        </button>
-                        </div>
-                        {% endfor %}
-                    </div>
-
-                    </div>
-                </div>
-                </section>
-<!-- xxxxxxxxxxxx Combined Section End xxxxxxxxxxxx -->
-
-            <section class="sec2" id="highlights">
-                <div class="container mx-auto">
-                    {% for rs in welcome %}
-                    <h1 class="section-title">{{rs.title}} - Highlights </h1>
-                    {% endfor %}
-
-                    <div class="row">
-                        {% for rs in unique_Selling_Proposition %}
-                        <div class="col-xl-6 col-lg-4 col-sm-12 mb-3">
-                            <div class="highlightData">
-                                <div class="iconBox"> <i class="fa-solid fa-check-double"></i> </div>
-                                <p>{{rs.title}} </p>
+                            <div class="form-section p-4">
+                                <form class="text-center" name="Pre-Register-sidemodal" action="/submit-form/" method="post">
+                            {% csrf_token %}
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Your Name here..." name="name" required>
+                                <span class="error">Name field is required</span>
                             </div>
-                        </div>
-                        
-                        <div class="col-xl-6 col-lg-4 col-sm-12 mb-3">
-                            <div class="highlightData">
-                                <div class="iconBox"> <i class="fa-solid fa-check-double"></i> </div>
-                                <p>{{rs.title2}}</p>
+                            <div class="form-group mb-3">
+                                <input type="number" id="mobile" class="form-control" required placeholder="Phone Number" name="mobile" oninput="limitDigits(this, 10)">
+                                <span class="error">Mobile field is required</span>
                             </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </section>
-                
-            <!-- xxxxxxxxxxxx floor plan xxxxxxxxxxxx -->
-            <section class="sec1" id="pricing">
-                <div class="container sec-pd sec-price">
-                    <div class="row gx-md-5">
-                        <div class="col-12">
-                            {% for rs in welcome %}
-                            <h1 class="section-title on-rera">{{rs.title}} - Area & Pricing</h1>
-                            {% endfor %}
-                            <div class="">
-                                <table class="table table-borderless table-striped table-pricing text-center">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Type</th>
-                                            <th scope="col">Area</th>
-                                            <th scope="col">Price (All-Incl)</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for rs in configuration %}
-                                        <tr>
-                                            <td class="price">{{rs.typology}}</td>
-                                            <td>{{rs.rera_carpet_area}}</td>
-                                            <td class="price"><span style="font-family: sans-serif;">₹</span>{{rs.price}}</td>
-                                            <td> <a href="javascript:void(0);" class="btn text-white my-1 enquiryBtn1 pricing-btn-1 custom-btn data-id-btn on-rera" data-bs-target="#enquire-modal" data-bs-toggle="modal" data-bs-whatever="Enquire Now" data-id="Costing Details">Complete Costing Details</a> </td>
-                                            
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
+                            <div class="form-group mb-3">
+                                <input type="email" id="email" class="form-control" required placeholder="Email" name="email">
+                                <span class="error">Email field is required</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- xxxxxxxxxxxx floor plan end xxxxxxxxxxxx -->
-            <section class="sec2" id="sitefloorplan">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 layout-plan text-center">
                             <div>
-                                <h1 class="section-title on-rera">Master Plan Layout</h1>
+                                <input type="hidden" name="form_name" id="form_name2" class="form-control form_name" value="Pre-Register">
+                                <input type="hidden" id="website_url2" class="website_url" name="website_url">
                             </div>
-                            <img src="{%  static '' %}assets/images/floor-plan/MasterPlan.webp" alt="" class="img-fluid">
-                            <div class="btn_box text-center"> <a href="#" class="btn mt-4 custom-btn data-id-btn on-rera mx-auto" data-bs-target="#enquire-modal" data-bs-toggle="modal" data-bs-whatever="Enquire Now" data-id="Master Layout Plan"> Request Master Layout Plan </a>
+                            <div class="form-group acceptance mb-3" style="font-size: 10px;"><label class="form-check-label text-start">
+                                    <input type="checkbox" checked class="form-check-input" required>
+                                    <span class="text on-rera">I Consent to The Processing of Provided Data According To <a href="{% url "privacy-policy" %}" style="color:#007bff"> Privacy Policy | </a> <a href="terms-conditions.html" style="color:#007bff;"> Terms &amp; Conditions</a>, I Authorize Prop Solutions 4 U Pvt. Ltd. and its representatives to Call, SMS, Email or WhatsApp Me About Its Products and Offers. This Consent Overrides Any Registration For DNC/NDNC. </span>
+                                    <span class="text non-rera">Please be informed that this website is not intended to facilitate any sales transactions. I understand and acknowledge that the project I am interested in hasn't yet secured RERA clearance. The primary purpose of this website is to generate interest and gather information. By providing my data, I consent to its use in accordance with the <a href="Privacy-Policy.html" style="color:#007bff"> Privacy Policy | </a> <a href="terms-conditions.html" style="color:#007bff;"> Terms &amp; Conditions</a></span>
+                                </label>
+                            </div>
+                            <button id="right-panel-preregister-button" class="btn preRegisterBtn data-id-btn on-rera" data-id="Pre-Register" onclick="submitForm(event, 'Pre-Register-sidemodal')">Pre-Register Now</button>
+
+                            </form>
+                            </div>
+                        </div>
+                                        <!-- xxxxxxxxxxxx Combined Overview + Project Section xxxxxxxxxxxx -->
+                        <style>
+                            /* --- Card container --- */
+                            .project-card {
+                            position: relative;
+                            background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+                            border-radius: 18px;
+                            padding: 28px 22px;
+                            box-shadow: 0 10px 30px rgba(14, 21, 47, 0.06);
+                            transition: transform 320ms cubic-bezier(.2,.9,.35,1), box-shadow 320ms ease, filter 320ms ease;
+                            text-align: center;
+                            overflow: visible;
+                            will-change: transform;
+                            transform-origin: center;
+                            border: 1px solid rgba(0,0,0,0.03);
+                            }
+
+                            /* Hover: stronger 3D lift + slight rotate */
+                            .project-card:hover {
+                            transform: translateY(-14px) rotateZ(-0.6deg) scale(1.02);
+                            box-shadow: 0 22px 50px rgba(14, 21, 47, 0.16);
+                            filter: saturate(1.03);
+                            }
+
+                            /* Subtle golden top accent line (fades in on hover) */
+                            .project-card::after{
+                            content: "";
+                            position: absolute;
+                            left: 18px;
+                            right: 18px;
+                            top: 10px;
+                            height: 6px;
+                            border-radius: 6px;
+                            background: linear-gradient(90deg, rgba(180,138,28,0) 0%, rgba(180,138,28,0.0) 10%, rgba(180,138,28,0.45) 50%, rgba(180,138,28,0.0) 90%);
+                            opacity: 0;
+                            transition: opacity 260ms ease, transform 320ms ease;
+                            transform: translateY(-6px);
+                            pointer-events: none;
+                            }
+                            .project-card:hover::after { opacity: 1; transform: translateY(0); }
+
+                            /* Title & meta */
+                            .project-card h1 {
+                            font-size: 26px;
+                            font-weight: 800;
+                            letter-spacing: 0.6px;
+                            text-transform: uppercase;
+                            margin: 6px 0 2px;
+                            color: #202124;
+                            }
+                            .project-card h6 { color: #6e6e6e; font-size: 14px; margin: 0; }
+
+                            /* Details box with subtle inner shadow */
+                            .details-box {
+                            background-color: #f6f6f6;
+                            border-radius: 12px;
+                            padding: 14px 12px;
+                            margin: 18px 0;
+                            box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+                            }
+                            .details-box div { font-size: 15px; margin: 6px 0; color: #333; }
+
+                            /* Offer box with animated border & pulse on hover */
+                            .offerBox {
+                            position: relative;
+                            background: linear-gradient(90deg, #b48a1c 0%, #d0ac3f 100%);
+                            color: #fff;
+                            border-radius: 12px;
+                            padding: 12px 14px;
+                            margin: 10px 0 14px;
+                            overflow: hidden;
+                            transition: transform 300ms ease;
+                            }
+                            .offerBox::before {
+                            content: "";
+                            position: absolute;
+                            inset: 2px;
+                            border-radius: 10px;
+                            border: 3px dashed rgba(255,255,255,0.35);
+                            mix-blend-mode: overlay;
+                            transform: scale(0.98);
+                            transition: transform 300ms ease, opacity 300ms ease;
+                            opacity: 0.9;
+                            }
+                            .project-card:hover .offerBox { transform: translateY(-6px) scale(1.01); animation: pulseOffer 2000ms infinite ease-in-out 800ms; }
+                            @keyframes pulseOffer {
+                            0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.04); }
+                            50% { box-shadow: 0 6px 18px -6px rgba(255,255,255,0.06); }
+                            100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.04); }
+                            }
+                            .offerBox p { margin: 4px 0; font-weight: 600; letter-spacing: 0.2px; }
+
+                            /* Price styling with accent coin */
+                            .price {
+                            font-size: 22px;
+                            font-weight: 800;
+                            color: #222;
+                            margin-top: 6px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: baseline;
+                            gap: 8px;
+                            }
+                            .price .symbol {
+                            color: #b48a1c;
+                            font-size: 20px;
+                            transform: translateY(-2px);
+                            }
+
+                            /* Enquire button: raised style + hover lift */
+                            .project-card .btn-enquire {
+                            display:inline-block;
+                            background: linear-gradient(180deg,#b48a1c,#9a6f12);
+                            color:#fff;
+                            font-weight:700;
+                            border:none;
+                            border-radius:10px;
+                            padding:10px 22px;
+                            margin-top:12px;
+                            cursor:pointer;
+                            box-shadow: 0 8px 20px rgba(164,120,32,0.14);
+                            transition: transform 220ms ease, box-shadow 220ms ease, opacity 200ms;
+                            }
+                            .project-card .btn-enquire:hover {
+                            transform: translateY(-6px);
+                            box-shadow: 0 18px 38px rgba(150,100,30,0.18);
+                            opacity: 0.98;
+                            }
+
+                            /* small responsive tweaks */
+                            @media (max-width: 768px) {
+                            .project-card { padding: 20px; }
+                            .project-card h1 { font-size: 20px; }
+                            }
+                        </style>
+
+
+                        <section class="sec1" id="about_us">
+                            <div class="container">
+                                <div class="row justify-content-center">
+
+                                <!-- LEFT SIDE : Project Details Card -->
+                                <div class="col-xl-5 col-lg-5 col-md-12 mb-4">
+                                    {% for rs in bookingopen %}
+                                    <div class="project-card">
+                                    <p class="text-center mb-1" style="color:#888;font-weight:500;">New Launch</p>
+                                    <h1>{{ rs.project_name }}</h1>
+                                    <h6>By {{ rs.by }}</h6>
+                                    <h6>At {{ rs.at }}</h6>
+
+                                    <div class="details-box">
+                                        <div><strong>Land Parcel:</strong> {{ rs.landp_arcel }}</div>
+                                        <div><strong>Floors:</strong> {{ rs.floors }}</div>
+                                        <div><strong>Possession:</strong> {{ rs.possession }}</div>
+                                    </div>
+
+                                    <div class="offerBox">
+                                        <p>◆ {{ rs.spot_booking_offers }}</p>
+                                        <p>◆ {{ rs.early_buy_discounts }}</p>
+                                        <p>◆ {{ rs.flexipay_for_first }}</p>
+                                    </div>
+
+                                    <p class="mb-0" style="font-size:15px;">Premium {{ rs.luxurious }}</p>
+                                    <div class="price"><span class="symbol">₹</span> <span>{{ rs.priceing }}</span></div>
+
+                                    <button type="button" class="btn-enquire"
+                                        data-bs-target="#enquire-modal" data-bs-toggle="modal"
+                                        data-bs-whatever="Enquire Now" data-id="Brochure">
+                                        Enquire Now
+                                    </button>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+                                <!-- RIGHT SIDE : Overview Content -->
+                                <div class="col-xl-7 col-lg-7 col-md-12">
+                                    {% for rs in welcome %}
+                                    <div class="overview-data">
+                                    <h1>Welcome To {{ rs.title }}</h1>
+                                    <p>{{ rs.details }}</p>
+                                    <p class="overview-info">
+                                        <span class="moreText" style="display: none;">{{ rs.readmore }}</span>
+                                    </p>
+
+                                    <button class="readMoreBtn custom-btn" onclick="toggleReadMore(this)">Read More</button>
+                                    <br><br>
+
+                                    <button id="request-brochure-button" type="button" class="custom-btn data-id-btn on-rera"
+                                        data-bs-target="#enquire-modal" data-bs-toggle="modal"
+                                        data-bs-whatever="Enquire Now" data-id="Brochure">
+                                        <i class="fa-solid fa-download"></i>&nbsp;&nbsp;Request Brochure
+                                    </button>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+                                </div>
+                            </div>
+                        </section>
+                        <!-- xxxxxxxxxxxx Combined Section End xxxxxxxxxxxx -->
+
+                        <section class="sec2" id="highlights">
+                            <div class="container mx-auto">
+                                {% for rs in welcome %}
+                                <h1 class="section-title">{{rs.title}} - Highlights </h1>
+                                {% endfor %}
+
+                                <div class="row">
+                                    {% for rs in unique_Selling_Proposition %}
+                                    <div class="col-xl-6 col-lg-4 col-sm-12 mb-3">
+                                        <div class="highlightData">
+                                            <div class="iconBox"> <i class="fa-solid fa-check-double"></i> </div>
+                                            <p>{{rs.title}} </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xl-6 col-lg-4 col-sm-12 mb-3">
+                                        <div class="highlightData">
+                                            <div class="iconBox"> <i class="fa-solid fa-check-double"></i> </div>
+                                            <p>{{rs.title2}}</p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+                            
+                        <!-- xxxxxxxxxxxx floor plan xxxxxxxxxxxx -->
+                        <section class="sec1" id="pricing">
+                            <div class="container sec-pd sec-price">
+                                <div class="row gx-md-5">
+                                    <div class="col-12">
+                                        {% for rs in welcome %}
+                                        <h1 class="section-title on-rera">{{rs.title}} - Area & Pricing</h1>
+                                        {% endfor %}
+                                        <div class="">
+                                            <table class="table table-borderless table-striped table-pricing text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Type</th>
+                                                        <th scope="col">Area</th>
+                                                        <th scope="col">Price (All-Incl)</th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for rs in configuration %}
+                                                    <tr>
+                                                        <td class="price">{{rs.typology}}</td>
+                                                        <td>{{rs.rera_carpet_area}}</td>
+                                                        <td class="price"><span style="font-family: sans-serif;">₹</span>{{rs.price}}</td>
+                                                        <td> <a href="javascript:void(0);" class="btn text-white my-1 enquiryBtn1 pricing-btn-1 custom-btn data-id-btn on-rera" data-bs-target="#enquire-modal" data-bs-toggle="modal" data-bs-whatever="Enquire Now" data-id="Costing Details">Complete Costing Details</a> </td>
+                                                        
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- xxxxxxxxxxxx floor plan end xxxxxxxxxxxx -->
+                        <section class="sec2" id="sitefloorplan">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6 layout-plan text-center">
+                                        <div>
+                                            <h1 class="section-title on-rera">Master Plan Layout</h1>
+                                        </div>
+                                        <img src="{%  static '' %}assets/images/floor-plan/MasterPlan.webp" alt="" class="img-fluid">
+                                        <div class="btn_box text-center"> <a href="#" class="btn mt-4 custom-btn data-id-btn on-rera mx-auto" data-bs-target="#enquire-modal" data-bs-toggle="modal" data-bs-whatever="Enquire Now" data-id="Master Layout Plan"> Request Master Layout Plan </a>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 layout-plan text-center">
+                                        <div>
+                                            <h1 class="section-title on-rera">Unit Plan Layout</h1>
+                                        </div>
+                                        <img src="{%  static '' %}assets/images/floor-plan/UnitPlan.webp" alt="" class="img-fluid">
+                                        <div class="btn_box text-center"> <a href="#" class="btn mt-4 custom-btn data-id-btn on-rera mx-auto" data-bs-target="#enquire-modal" data-bs-toggle="modal" data-bs-whatever="Enquire Now" data-id="Unit Layout Plan"> Request Unit Layout Plans </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- xxxxxxxxxxxx floor plan end xxxxxxxxxxxx -->
+                        <section class="amenities-section" id="amenities">
+                                <h2>Amenities</h2>
+                                <div class="underline"></div>
+                                <div class="slider-container">
+                                <div class="slider-wrapper" id="slider-wrapper"></div>
+                                <button class="slider-btn prev-btn">&#10094;</button>
+                                <button class="slider-btn next-btn">&#10095;</button>
+                                </div>
+                        </section>
+                        <!-- xxxxxxxxxxxx Amenities section end end xxxxxxxxxxxx -->
+                        <!-- xxxxxxxxxxxx Gallery section xxxxxxxxxxxx -->
+                        <section class="sec2" id="gallery">
+                            <div class="container wow fadeInUp">
+                                <!-- data-wow-delay="0.1s" -->
+                                <h1 class="section-title">Project Gallery</h1>
+                                <div class="content-gallery">
+                                    <div class="gallery js-gallery">
+                                        {% for rs in gallery %}
+                                        <div class="gallery-item">
+                                            <div class="gallery-img-holder js-gallery-popup">
+                                                <img src="{{rs.web_image.url}}" style="height: 175px;" alt="" class="gallery-img">
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- xxxxxxxxxxxx Gallery section end xxxxxxxxxxxx -->
+                        <section class="sec1" id="location">
+                            <div class="container" >
+                                <h1 class="section-title">Location Advantage</h1>
+                                <div class="row mt-2 px-0 mx-0"> <!-- Remove padding -->
+                                    <div class="map-container w-100">
+                                        {{ rs.location|safe }}
+                                    </div>
+                                </div>
+                                <div class="row pt-30 mb-3">
+                                    <div class="col-xl-12 col-lg-12 col-sm-12 text-dark mt-3 amenities-img">
+                                        <!-- location-img-->
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-sm-12 text-dark amenities-info mt-3 ps-2 pe-2">
+                                        <div id="exTab1" class="fuild-container">
+                                            <nav class="nav nav-pills">
+                                                <a class="nav-link active" data-bs-toggle="pill" href="#Connectivity" role="tab" aria-selected="false">
+                                                    <h6 class="subtitle inventory">Connectivity</h6>
+                                                </a>
+                                                <!--<a class="nav-link" data-bs-toggle="pill" href="#education-hub" role="tab" aria-selected="false">-->
+                                                <!--	<h6 class="subtitle inventory">Education Hub</h6>-->
+                                                <!--</a>-->
+                                                <!--<a class="nav-link" data-bs-toggle="pill" href="#HealthCare" role="tab" aria-selected="false">-->
+                                                <!--	<h6 class="subtitle inventory">Healthcare</h6>-->
+                                                <!--</a>-->
+                                                <!--<a class="nav-link " data-bs-toggle="pill" href="#techpark" role="tab">-->
+                                                <!--	<h6 class="subtitle inventory">Tech Parks</h6>-->
+                                                <!--</a>-->
+                                                <!--<a class="nav-link " data-bs-toggle="pill" href="#mall" role="tab">-->
+                                                <!--	<h6 class="subtitle inventory">Malls/ Hotels/ Shopping centers</h6>-->
+                                                <!--</a>-->
+                                            </nav>
+                                            <div class="tab-content clearfix">
+                                                <div class="tab-pane fade active show" id="Connectivity">
+                                                    <ul>
+                                                        {% for rs in location %}
+                                                        <li>{{rs.title}}</li>
+                                                        {% endfor %}
+                                                        
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <button id="request-location-button" type="button" class="btn mt-2 custom-btn data-id-btn on-rera mx-auto d-block" data-bs-target="#enquire-modal" data-bs-toggle="modal" data-bs-whatever="Enquire Now" data-id="Location Map">Request Location Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- xxxxxxxxxxxx Connectivity section end xxxxxxxxxxxx -->
+
+                        <section class="virtual-tour-section" id="virtual-tour-section" >
+                            <div class="virtual-tour-section" style="height: 500px;" >
+                                <img class="background-img" src="{{rs.virtual_site_visit.url}}" alt="Virtual Tour Background" />
+                                <div class="virtual-tour-overlay">
+                                    <div class="virtual-tour-title">VIRTUAL SITE VISIT</div>
+                                    {% for rs in welcome %}
+                                    <div class="virtual-tour-subtitle"><h1>{{rs.title}}<h2></div>
+                                    {% endfor %}
+                                    <div class="virtual-tour-play-button" data-bs-toggle="modal" data-bs-target="#enquire-modal">▶</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- xxxxxxxxxxxx Contact section xxxxxxxxxxxx -->
+                        <section id="contact">
+                            <div class="container-fluid full-width"></div>
+                            <div class="container">
+                                <div class="contact-inner">
+                                    <div class="container contact-data">
+                                        <div class="row">
+                                            <div class="col-lx-6 col-lg-6 col-sm-12 image-carousel1 ps-0 pe-0">
+                                                <img src="{%  static '' %}assets/images/contact/contact.webp" class="img-fluid" />
+                                            </div>
+                                            <div class="col-lx-6 col-lg-6 col-sm-12 form-data">
+                                                <h2 class="text-left ms-4 mt-4 mb-0" style="font-size: 24px;">Schedule a Site Visit</h2>
+                                                <div class="form">
+                                                    <form name="schedule-site" action="/submit-form/" method="post">
+                                                        {% csrf_token %}
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-sm-12 forms-input-fields">
+                                                                <i class="fa-solid fa-user"></i>
+                                                                <input type="text" name="name" class="form-control ms-0 me-0" required placeholder="Name*">
+                                                                <span class="error">Name field is required</span>
+                                                            </div>
+                                                            <div class="col-lg-12 col-sm-12 forms-input-fields">
+                                                                <i class="fa-solid fa-phone"></i>
+                                                                <input type="number" name="mobile" id="mobile" class="form-control ms-0 me-0" required placeholder="Mobile*">
+                                                                <span class="error">Mobile field is required</span>
+                                                            </div>
+                                                                    <div class="col-lg-12 col-sm-12 forms-input-fields">
+                                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                                <input type="email" name="email" id="email" class="form-control ms-0 me-0" required placeholder="Email*">
+                                                                <span class="error">Email field is required</span>
+                                                            </div>
+                                                            <div>
+                                                                <input type="hidden" name="form_name" id="form_name3" class="form-control form_name" value="Contact Site Visit">
+                                                                <input type="hidden" id="website_url3" class="website_url" name="website_url">
+                                                            </div>
+                                                            <div class="form-group acceptance mb-2" style="font-size: 10px;">
+                                                                <label class="form-check-label text-start">
+                                                                    <input type="checkbox" checked class="form-check-input" required="">
+                                                                    <span class="text on-rera">I Consent to The Processing of Provided Data According To <a href="{% url "privacy-policy" %}" style="color:#007bff"> Privacy Policy | </a> <a href="terms-conditions.html" style="color:#007bff;"> Terms &amp; Conditions</a>, I Authorize Prop Solutions 4 U Pvt. Ltd. and its representatives to Call, SMS, Email or WhatsApp Me About Its Products and Offers. This Consent Overrides Any Registration For DNC/NDNC. </span>
+                                                                    <span class="text non-rera">Please be informed that this website is not intended to facilitate any sales transactions. I understand and acknowledge that the project I am interested in hasn't yet secured RERA clearance. The primary purpose of this website is to generate interest and gather information. By providing my data, I consent to its use in accordance with the <a href="{% url "privacy-policy" %}" style="color:#007bff"> Privacy Policy | </a> <a href="terms-conditions.html" style="color:#007bff;"> Terms &amp; Conditions</a></span>
+                                                                </label>
+                                                            </div>
+                                                            <button id="schedule-site-visit-button" type="submit" name="submit" class="btn ms-2 custom-btn btn-hover text-white data-id-btn" style="width: auto;" data-id="Contact Site Visit" onclick="submitForm(event, 'schedule-site')">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-lx-6 col-lg-6 col-sm-12 ps-0 pe-0 image-carousel m-0">
+                                                <img src="{%  static '' %}assets/images/contact/contact.webp" class="img-fluid" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <section class="sec1" id="welcometo">
+                            <div class="container">                    
+                                <div class="overview-data">
+                                {% for rs in about_us %}
+                                <h1>{{ rs.title }}</h1>
+                                <p>{{ rs.details }}</p>
+                                <p class="overview-info">        
+                                {% endfor %}                
+                                </div>
+                            </div>
+                            
+                            <div class="container" style="padding: 30px;">  
+                            {% for rs in maharera %}
+
+                            <span class="d-block section-heading-sub1 text-capitalize">RERA Information</span>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="rera-box">
+                                        <div class="rera-img">
+                                            <img src="{{rs.qr_image.url}}" loading="lazy" style="max-width: 100%; height: 100px; display: inline-block;" alt="P51800076673" />
+                                        </div>
+                                        <div class="rera-details">
+                                            <p>{{rs.title}} - <b>{{rs.maharera_no}}</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="pro-rera text-center-mob">{{rs.details}}</span>
+                            <p></p>
+                            {% endfor %}
+                            </div>
+                        </section>
+                        <!-- xxxxxxxxxxxx Overview section End xxxxxxxxxxxx -->
+
+                        <section style="text-align:justify;background:#f7f7f7 !important;" class="section shadow-sm lazyload" id="developer">
+                            <small>
+                            <style>
+                            .newlist { list-style: none; line-height: 25px; padding-left: 22px; }
+                            .newlist li:before { content: '✓'; font-weight: 800;  margin-right: 10px;  font-size: 13px;  margin-left: -22px; }
+                            </style>
+                            <div class="container" style="padding-left: 50px;">
+                                {% for rs in reraaditional %}
+                                <ul class="newlist" style="padding-top: 20px;">
+                                    <li>{{rs.project_registered}} </li>
+                                    <li>{{rs.Government_RERA_Authorised_Advertiser}}.</li>
+                                    <li>{{rs.RERA_Project_Registration_No}}</li>
+                                    <li><b>Site Address:</b> {{rs.Site_Address}}</li>
+                                    <li><b>Contact Us:</b>{{rs.Contact_Us}}</li>
+                                    
+                                </ul>
+
+                                <b>Disclaimer:</b>
+                                {{rs.Disclaimer}}
+                                <hr>
+                                {% endfor %}
                                 
                             </div>
-                        </div>
-                        <div class="col-md-6 layout-plan text-center">
-                            <div>
-                                <h1 class="section-title on-rera">Unit Plan Layout</h1>
-                            </div>
-                            <img src="{%  static '' %}assets/images/floor-plan/UnitPlan.webp" alt="" class="img-fluid">
-                            <div class="btn_box text-center"> <a href="#" class="btn mt-4 custom-btn data-id-btn on-rera mx-auto" data-bs-target="#enquire-modal" data-bs-toggle="modal" data-bs-whatever="Enquire Now" data-id="Unit Layout Plan"> Request Unit Layout Plans </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- xxxxxxxxxxxx floor plan end xxxxxxxxxxxx -->
-            <section class="amenities-section" id="amenities">
-                    <h2>Amenities</h2>
-                    <div class="underline"></div>
-                    <div class="slider-container">
-                    <div class="slider-wrapper" id="slider-wrapper"></div>
-                    <button class="slider-btn prev-btn">&#10094;</button>
-                    <button class="slider-btn next-btn">&#10095;</button>
-                    </div>
-            </section>
-            <!-- xxxxxxxxxxxx Amenities section end end xxxxxxxxxxxx -->
-            <!-- xxxxxxxxxxxx Gallery section xxxxxxxxxxxx -->
-            <section class="sec2" id="gallery">
-                <div class="container wow fadeInUp">
-                    <!-- data-wow-delay="0.1s" -->
-                    <h1 class="section-title">Project Gallery</h1>
-                    <div class="content-gallery">
-                        <div class="gallery js-gallery">
-                            {% for rs in gallery %}
-                            <div class="gallery-item">
-                                <div class="gallery-img-holder js-gallery-popup">
-                                    <img src="{{rs.web_image.url}}" style="height: 175px;" alt="" class="gallery-img">
+
+                                <div style="padding: 20px;">
+                                    <b>Disclaimer:</b>
+                                    We are an authorised marketing partner for this project. Provided content is given by respective owners and this website and content is for information purpose only and it does not constitute any offer to avail for any services. Prices mentioned are subject to change without prior notice and properties mentioned are subject to availability. You can expect a call, SMS or emails on details registered with us.<hr>
+                                    <p style="text-align:center;">Copyright &copy; 2025 | <a aria-label="About Terms & Conditions" href="terms-conditions.php">Terms & Conditions</a> | <a aria-label="About Privacy Policy" href="{% url "privacy-policy" %}">Privacy Policy</a> | <a aria-label="About Cookies Policy" href="cookies-policy.php">Cookies Policy</a> </p>
+                                    </small>
                                 </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- xxxxxxxxxxxx Gallery section end xxxxxxxxxxxx -->
-            <section class="sec1" id="location">
-                <div class="container" >
-                    <h1 class="section-title">Location Advantage</h1>
-                    <div class="row mt-2 px-0 mx-0"> <!-- Remove padding -->
-                        <div class="map-container w-100">
-                            {{ rs.location|safe }}
-                        </div>
-                    </div>
-                    <div class="row pt-30 mb-3">
-                        <div class="col-xl-12 col-lg-12 col-sm-12 text-dark mt-3 amenities-img">
-                            <!-- location-img-->
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-sm-12 text-dark amenities-info mt-3 ps-2 pe-2">
-                            <div id="exTab1" class="fuild-container">
-                                <nav class="nav nav-pills">
-                                    <a class="nav-link active" data-bs-toggle="pill" href="#Connectivity" role="tab" aria-selected="false">
-                                        <h6 class="subtitle inventory">Connectivity</h6>
-                                    </a>
-                                    <!--<a class="nav-link" data-bs-toggle="pill" href="#education-hub" role="tab" aria-selected="false">-->
-                                    <!--	<h6 class="subtitle inventory">Education Hub</h6>-->
-                                    <!--</a>-->
-                                    <!--<a class="nav-link" data-bs-toggle="pill" href="#HealthCare" role="tab" aria-selected="false">-->
-                                    <!--	<h6 class="subtitle inventory">Healthcare</h6>-->
-                                    <!--</a>-->
-                                    <!--<a class="nav-link " data-bs-toggle="pill" href="#techpark" role="tab">-->
-                                    <!--	<h6 class="subtitle inventory">Tech Parks</h6>-->
-                                    <!--</a>-->
-                                    <!--<a class="nav-link " data-bs-toggle="pill" href="#mall" role="tab">-->
-                                    <!--	<h6 class="subtitle inventory">Malls/ Hotels/ Shopping centers</h6>-->
-                                    <!--</a>-->
-                                </nav>
-                                <div class="tab-content clearfix">
-                                    <div class="tab-pane fade active show" id="Connectivity">
-                                        <ul>
-                                            {% for rs in location %}
-                                            <li>{{rs.title}}</li>
-                                            {% endfor %}
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-2">
-                            <button id="request-location-button" type="button" class="btn mt-2 custom-btn data-id-btn on-rera mx-auto d-block" data-bs-target="#enquire-modal" data-bs-toggle="modal" data-bs-whatever="Enquire Now" data-id="Location Map">Request Location Details</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- xxxxxxxxxxxx Connectivity section end xxxxxxxxxxxx -->
+                        </section>
 
-            <section class="virtual-tour-section" id="virtual-tour-section" >
-                <div class="virtual-tour-section" style="height: 500px;" >
-                    <img class="background-img" src="{{rs.virtual_site_visit.url}}" alt="Virtual Tour Background" />
-                    <div class="virtual-tour-overlay">
-                        <div class="virtual-tour-title">VIRTUAL SITE VISIT</div>
-                        {% for rs in welcome %}
-                        <div class="virtual-tour-subtitle"><h1>{{rs.title}}<h2></div>
-                        {% endfor %}
-                        <div class="virtual-tour-play-button" data-bs-toggle="modal" data-bs-target="#enquire-modal">▶</div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- xxxxxxxxxxxx Contact section xxxxxxxxxxxx -->
-            <section id="contact">
-                <div class="container-fluid full-width"></div>
-                <div class="container">
-                    <div class="contact-inner">
-                        <div class="container contact-data">
-                            <div class="row">
-                                <div class="col-lx-6 col-lg-6 col-sm-12 image-carousel1 ps-0 pe-0">
-                                    <img src="{%  static '' %}assets/images/contact/contact.webp" class="img-fluid" />
-                                </div>
-                                <div class="col-lx-6 col-lg-6 col-sm-12 form-data">
-                                    <h2 class="text-left ms-4 mt-4 mb-0" style="font-size: 24px;">Schedule a Site Visit</h2>
-                                    <div class="form">
-                                        <form name="schedule-site" action="/submit-form/" method="post">
-                                            {% csrf_token %}
-                                            <div class="row">
-                                                <div class="col-lg-12 col-sm-12 forms-input-fields">
-                                                    <i class="fa-solid fa-user"></i>
-                                                    <input type="text" name="name" class="form-control ms-0 me-0" required placeholder="Name*">
-                                                    <span class="error">Name field is required</span>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 forms-input-fields">
-                                                    <i class="fa-solid fa-phone"></i>
-                                                    <input type="number" name="mobile" id="mobile" class="form-control ms-0 me-0" required placeholder="Mobile*">
-                                                    <span class="error">Mobile field is required</span>
-                                                </div>
-                                                        <div class="col-lg-12 col-sm-12 forms-input-fields">
-                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                    <input type="email" name="email" id="email" class="form-control ms-0 me-0" required placeholder="Email*">
-                                                    <span class="error">Email field is required</span>
-                                                </div>
-                                                <div>
-                                                    <input type="hidden" name="form_name" id="form_name3" class="form-control form_name" value="Contact Site Visit">
-                                                    <input type="hidden" id="website_url3" class="website_url" name="website_url">
-                                                </div>
-                                                <div class="form-group acceptance mb-2" style="font-size: 10px;">
-                                                    <label class="form-check-label text-start">
-                                                        <input type="checkbox" checked class="form-check-input" required="">
-                                                        <span class="text on-rera">I Consent to The Processing of Provided Data According To <a href="{% url "privacy-policy" %}" style="color:#007bff"> Privacy Policy | </a> <a href="terms-conditions.html" style="color:#007bff;"> Terms &amp; Conditions</a>, I Authorize Prop Solutions 4 U Pvt. Ltd. and its representatives to Call, SMS, Email or WhatsApp Me About Its Products and Offers. This Consent Overrides Any Registration For DNC/NDNC. </span>
-                                                        <span class="text non-rera">Please be informed that this website is not intended to facilitate any sales transactions. I understand and acknowledge that the project I am interested in hasn't yet secured RERA clearance. The primary purpose of this website is to generate interest and gather information. By providing my data, I consent to its use in accordance with the <a href="{% url "privacy-policy" %}" style="color:#007bff"> Privacy Policy | </a> <a href="terms-conditions.html" style="color:#007bff;"> Terms &amp; Conditions</a></span>
-                                                    </label>
-                                                </div>
-                                                <button id="schedule-site-visit-button" type="submit" name="submit" class="btn ms-2 custom-btn btn-hover text-white data-id-btn" style="width: auto;" data-id="Contact Site Visit" onclick="submitForm(event, 'schedule-site')">Submit</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col-lx-6 col-lg-6 col-sm-12 ps-0 pe-0 image-carousel m-0">
-                                    <img src="{%  static '' %}assets/images/contact/contact.webp" class="img-fluid" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="sec1" id="welcometo">
-                <div class="container">                    
-                    <div class="overview-data">
-                    {% for rs in about_us %}
-                    <h1>{{ rs.title }}</h1>
-                    <p>{{ rs.details }}</p>
-                    <p class="overview-info">        
-                    {% endfor %}                
-                    </div>
-                </div>
-                
-                <div class="container" style="padding: 30px;">  
-                {% for rs in maharera %}
-
-                <span class="d-block section-heading-sub1 text-capitalize">RERA Information</span>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="rera-box">
-                            <div class="rera-img">
-                                <img src="{{rs.qr_image.url}}" loading="lazy" style="max-width: 100%; height: 100px; display: inline-block;" alt="P51800076673" />
-                            </div>
-                            <div class="rera-details">
-                                <p>{{rs.title}} - <b>{{rs.maharera_no}}</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <span class="pro-rera text-center-mob">{{rs.details}}</span>
-                <p></p>
-                {% endfor %}
-                </div>
-            </section>
-            <!-- xxxxxxxxxxxx Overview section End xxxxxxxxxxxx -->
-
-            <section style="text-align:justify;background:#f7f7f7 !important;" class="section shadow-sm lazyload" id="developer">
-                <small>
-                <style>
-                .newlist { list-style: none; line-height: 25px; padding-left: 22px; }
-                .newlist li:before { content: '✓'; font-weight: 800;  margin-right: 10px;  font-size: 13px;  margin-left: -22px; }
-                </style>
-                <div class="container" style="padding-left: 50px;">
-                    {% for rs in reraaditional %}
-                    <ul class="newlist" style="padding-top: 20px;">
-                        <li>{{rs.project_registered}} </li>
-                        <li>{{rs.Government_RERA_Authorised_Advertiser}}.</li>
-                        <li>{{rs.RERA_Project_Registration_No}}</li>
-                        <li><b>Site Address:</b> {{rs.Site_Address}}</li>
-                        <li><b>Contact Us:</b>{{rs.Contact_Us}}</li>
-                        
-                    </ul>
-
-                    <b>Disclaimer:</b>
-                    {{rs.Disclaimer}}
-                    <hr>
-                    {% endfor %}
-                    
-                </div>
-        
-                    <div style="padding: 20px;">
-                        <b>Disclaimer:</b>
-                        We are an authorised marketing partner for this project. Provided content is given by respective owners and this website and content is for information purpose only and it does not constitute any offer to avail for any services. Prices mentioned are subject to change without prior notice and properties mentioned are subject to availability. You can expect a call, SMS or emails on details registered with us.<hr>
-                        <p style="text-align:center;">Copyright &copy; 2025 | <a aria-label="About Terms & Conditions" href="terms-conditions.php">Terms & Conditions</a> | <a aria-label="About Privacy Policy" href="{% url "privacy-policy" %}">Privacy Policy</a> | <a aria-label="About Cookies Policy" href="cookies-policy.php">Cookies Policy</a> </p>
-                        </small>
-                    </div>
-            </section>
-
-            <!-- xxxxxxxxxxxx Contact section end xxxxxxxxxxxxxx -->
-            <a id="discovery" target="_blank" class="whatsaapBtn d-none d-lg-block on-rera" aria-label="WhatsApp" href="https://api.whatsapp.com/send?phone=91{{rs.cuntact_no}}&text=Hey There, I would like to explore further details About {% for rs in bookingopen %} {{rs.project_name}}  By {{rs.by}} At {{rs.at}} {% endfor %} Please Share Details.">
-                <span>
-                    <img src="{%  static '' %}assets/images/icons/whatsapp.webp" width="32" alt=" ">
-                </span>
-            </a>
+                        <!-- xxxxxxxxxxxx Contact section end xxxxxxxxxxxxxx -->
+                        <a id="discovery" target="_blank" class="whatsaapBtn d-none d-lg-block on-rera" aria-label="WhatsApp" href="https://api.whatsapp.com/send?phone=91{{rs.cuntact_no}}&text=Hey There, I would like to explore further details About {% for rs in bookingopen %} {{rs.project_name}}  By {{rs.by}} At {{rs.at}} {% endfor %} Please Share Details.">
+                            <span>
+                                <img src="{%  static '' %}assets/images/icons/whatsapp.webp" width="32" alt=" ">
+                            </span>
+                        </a>
 
 
 
 
 
-   <script>
-    const amenities = [
-    {% for rs in amenities %}
-      { img: "{{rs.icone.url}}", label: "{{rs.title}}" },
-    {% endfor %}
+<script>
+const amenities = [
+{% for rs in amenities %}
+{ img: "{{rs.icone.url}}", label: "{{rs.title}}" },
+{% endfor %}
 
-    ];
+];
 
-    const wrapper = document.getElementById("slider-wrapper");
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+const wrapper = document.getElementById("slider-wrapper");
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
 
-    let index = 0;
-    let perPage = 6; // default
+let index = 0;
+let perPage = 6; // default
 
-    function getPerPage() {
-      if (window.innerWidth <= 600) return 1; // mobile ek ek card
-      return 6; // tablet & desktop dono me 6 ek page
-    }
+function getPerPage() {
+if (window.innerWidth <= 600) return 1; // mobile ek ek card
+return 6; // tablet & desktop dono me 6 ek page
+}
 
-    function createPages() {
-      wrapper.innerHTML = "";
-      perPage = getPerPage();
+function createPages() {
+wrapper.innerHTML = "";
+perPage = getPerPage();
 
-      for (let i = 0; i < amenities.length; i += perPage) {
-        const page = document.createElement("div");
-        page.classList.add("slide-page");
+for (let i = 0; i < amenities.length; i += perPage) {
+const page = document.createElement("div");
+page.classList.add("slide-page");
 
-        amenities.slice(i, i + perPage).forEach(item => {
-          const card = document.createElement("div");
-          card.classList.add("amenity-card");
-          card.innerHTML = `
-            <img src="${item.img}" alt="${item.label}">
-            <span class="artist-tag">*Artists Impression</span>
-            <span class="amenity-label">${item.label}</span>
-          `;
-          page.appendChild(card);
-        });
+amenities.slice(i, i + perPage).forEach(item => {
+const card = document.createElement("div");
+card.classList.add("amenity-card");
+card.innerHTML = `
+<img src="${item.img}" alt="${item.label}">
+<span class="artist-tag">*Artists Impression</span>
+<span class="amenity-label">${item.label}</span>
+`;
+page.appendChild(card);
+});
 
-        wrapper.appendChild(page);
-      }
-    }
+wrapper.appendChild(page);
+}
+}
 
-    function updateSlide() {
-      wrapper.style.transform = `translateX(${-index * 100}%)`;
-    }
+function updateSlide() {
+wrapper.style.transform = `translateX(${-index * 100}%)`;
+}
 
-    function initSlider() {
-      createPages();
-      index = 0;
-      updateSlide();
-      const totalPages = document.querySelectorAll('.slide-page').length;
+function initSlider() {
+createPages();
+index = 0;
+updateSlide();
+const totalPages = document.querySelectorAll('.slide-page').length;
 
-      nextBtn.onclick = () => {
-        if (index < totalPages - 1) {
-          index++;
-          updateSlide();
-        }
-      };
+nextBtn.onclick = () => {
+if (index < totalPages - 1) {
+index++;
+updateSlide();
+}
+};
 
-      prevBtn.onclick = () => {
-        if (index > 0) {
-          index--;
-          updateSlide();
-        }
-      };
+prevBtn.onclick = () => {
+if (index > 0) {
+index--;
+updateSlide();
+}
+};
 
-      if (totalPages <= 1) {
-        prevBtn.style.display = "none";
-        nextBtn.style.display = "none";
-      } else {
-        prevBtn.style.display = "block";
-        nextBtn.style.display = "block";
-      }
-    }
+if (totalPages <= 1) {
+prevBtn.style.display = "none";
+nextBtn.style.display = "none";
+} else {
+prevBtn.style.display = "block";
+nextBtn.style.display = "block";
+}
+}
 
-    window.addEventListener("resize", initSlider);
-    window.addEventListener("load", initSlider);
-  </script>
+window.addEventListener("resize", initSlider);
+window.addEventListener("load", initSlider);
+</script>
 
 
         

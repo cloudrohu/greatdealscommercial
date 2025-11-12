@@ -22,10 +22,6 @@ $(document).ready(function () {
     }
   });
  // ✅ Modal popup after delay with repeat logic
-  let popupShownCount = 0;
-  const maxPopupTimes = 7; // max baar modal dikhana hai
-  const firstDelay = 9000; // pehli baar 5 sec baad
-  const repeatDelay = 7000; // close hone ke baad kitne sec baad dikhana hai
 
   const modalElement = document.getElementById('enquire-modal');
   const modalInstance = new bootstrap.Modal(modalElement);
@@ -37,15 +33,8 @@ $(document).ready(function () {
     }
   }
 
-  // Pehli baar show
-  setTimeout(showModalWithRepeat, firstDelay);
 
-  // Close hone ke baad fir repeat
-  modalElement.addEventListener('hidden.bs.modal', function () {
-    if (popupShownCount < maxPopupTimes) {
-      setTimeout(showModalWithRepeat, repeatDelay);
-    }
-  });
+
 
   // Store website URL in form field
   const url = new URL(window.location.href);
@@ -140,29 +129,4 @@ $(document).ready(function () {
     });
   });
 });
-// ✅ Modal popup after delay with repeat logic (safe version)
-let popupShownCount = 0;
-const maxPopupTimes = 7; // max baar modal dikhana hai
-const firstDelay = 9000; // pehli baar 5 sec baad
-const repeatDelay = 7000; // close hone ke baad kitne sec baad dikhana hai
 
-const modalElement = document.getElementById('enquire-modal');
-const modalInstance = new bootstrap.Modal(modalElement);
-
-function showModalWithRepeat() {
-  // Sirf tab show ho jab modal open na ho aur count max se kam ho
-  if (popupShownCount < maxPopupTimes && !modalElement.classList.contains('show')) {
-    modalInstance.show();
-    popupShownCount++;
-  }
-}
-
-// Pehli baar show
-setTimeout(showModalWithRepeat, firstDelay);
-
-// Close hone ke baad fir repeat
-modalElement.addEventListener('hidden.bs.modal', function () {
-  if (popupShownCount < maxPopupTimes) {
-    setTimeout(showModalWithRepeat, repeatDelay);
-  }
-});
